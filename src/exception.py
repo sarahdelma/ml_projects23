@@ -19,7 +19,7 @@ def error_message_detail(error, error_detail:sys):
 
 class CustomException(Exception):
     def __init__(self,error_message,error_detail:sys):
-       super.__init__(self,error_message,error_detail)
+       super().__init__(self,error_message,error_detail)
        self.error_message = error_message_detail(error_message,error_detail = error_detail)
        
      
@@ -31,6 +31,6 @@ if __name__=="__main__"    :
     try:
         a = 1/0
         
-    except:
+    except Exception as e:
         logging.info("Divide by 0 error")    
-        raise CustomException
+        raise CustomException(e,sys)
